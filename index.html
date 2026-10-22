@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="robots" content="noindex,nofollow">
+<title>Minhas tarefas (beta)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="auth" hidden></div>
+<main class="wrap" hidden>
+  <header class="head">
+    <div class="acct"><span class="who" id="who"></span><button type="button" class="lnk" data-act="conta">Minha conta</button><button type="button" class="lnk" data-act="sair">Sair</button></div>
+    <p class="date" id="date"></p>
+    <h1>Minhas tarefas <span class="beta">beta</span></h1>
+    <p class="sub" id="sub"></p>
+    <p class="localnote" id="localnote" hidden><span></span> <button type="button" class="lnk" data-act="conta">Fazer backup</button></p>
+  </header>
+
+  <div class="layout">
+    <aside class="left" id="left" aria-label="Data e calendário"></aside>
+
+    <div class="center">
+      <form class="add" id="add" autocomplete="off">
+        <label for="newtitle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Nova tarefa</label>
+        <input id="newtitle" type="text" maxlength="200" placeholder="Nova tarefa">
+        <select id="addwhere" aria-label="Onde colocar">
+          <option value="hoje">Hoje</option>
+          <option value="inicio">Início do dia</option>
+          <option value="noite">Noite</option>
+          <option value="urgente">Urgente</option>
+          <option value="amanha">Amanhã</option>
+          <option value="amanha-inicio">Início de amanhã</option>
+          <option value="amanha-noite">Noite de amanhã</option>
+          <option value="aguardando">Aguardando</option>
+        </select>
+        <select id="addorigem" aria-label="Origem da tarefa">
+          <option value="">Origem</option>
+          <option value="trabalho">Trabalho</option>
+          <option value="casa">Casa</option>
+          <option value="compras">Compras</option>
+          <option value="estudo">Estudo</option>
+          <option value="treino">Treino</option>
+          <option value="projetos">Projetos</option>
+        </select>
+        <button type="submit">Adicionar</button>
+      </form>
+      <div class="tools"><div class="orig" id="orig" role="group" aria-label="Filtrar por origem"></div>
+      <div class="vt" role="group" aria-label="Modo de visualização">
+        <button type="button" class="vb" data-act="view" data-v="quadros" aria-pressed="true">Quadros</button>
+        <button type="button" class="vb" data-act="view" data-v="lista" aria-pressed="false">Lista</button>
+      </div></div>
+      <div class="panels" id="panels"></div>
+    </div>
+
+    <aside class="right" id="right" aria-label="Compromissos dos próximos 7 dias"></aside>
+  </div>
+</main>
+
+<div class="overlay" id="dlg" hidden><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
